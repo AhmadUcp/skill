@@ -11,6 +11,8 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        'light-blue': '#ADD8E6', // Light Blue color for active link
+        'dark-blue': '#003366',  // Dark Blue color for logo
       },
     },
   },
