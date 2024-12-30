@@ -2,11 +2,23 @@
 
 import React, { useEffect, useState } from "react";
 import { db } from "../components/firebase";
-import { collection, getDocs, query, where } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import { useAuthContext } from "../components/authContext";
 
+interface Job {
+  id: string;
+  jobTitle: string;
+  jobDescription: string;
+  skillsRequired?: string[];
+  recommendedCourses?: string[];
+  createdAt?: {
+    seconds?: number;
+    nanoseconds?: number;
+  };
+}
+
 const MyJobs: React.FC = () => {
-  const [jobs, setJobs] = useState<any[]>([]);
+  const [jobs, setJobs] = useState<Job[]>([]);
   const [loading, setLoading] = useState(false);
   const { user } = useAuthContext();
 
@@ -20,9 +32,9 @@ const MyJobs: React.FC = () => {
         const userJobsCollectionRef = collection(db, "jobs", user.uid, "userJobs");
         const querySnapshot = await getDocs(userJobsCollectionRef);
 
-        const jobsData = querySnapshot.docs.map((doc) => ({
+        const jobsData: Job[] = querySnapshot.docs.map((doc) => ({
           id: doc.id,
-          ...doc.data(),
+          ...(doc.data() as Omit<Job, "id">),
         }));
 
         setJobs(jobsData);
@@ -58,16 +70,16 @@ const MyJobs: React.FC = () => {
               <div className="mt-2">
                 <strong>Skills Required:</strong>
                 <ul className="list-disc list-inside text-gray-700">
-                  {job.skillsRequired?.map((skill: string, index: number) => (
+                  {job.skillsRequired?.map((skill, index) => (
                     <li key={index}>{skill}</li>
                   ))}
                 </ul>
               </div>
-              {job.recommendedCourses?.length > 0 && (
+              {job.recommendedCourses?.length ? (
                 <div className="mt-2">
                   <strong>Recommended Courses:</strong>
                   <ul className="list-disc list-inside text-blue-600">
-                    {job.recommendedCourses.map((course: string, index: number) => (
+                    {job.recommendedCourses.map((course, index) => (
                       <li key={index}>
                         <a href={course} target="_blank" rel="noopener noreferrer">
                           {course}
@@ -76,9 +88,12 @@ const MyJobs: React.FC = () => {
                     ))}
                   </ul>
                 </div>
-              )}
+              ) : null}
               <p className="text-gray-500 text-sm mt-4">
-                Posted on: {new Date(job.createdAt?.seconds * 1000).toLocaleDateString()}
+                Posted on:{" "}
+                {job.createdAt?.seconds
+                  ? new Date(job.createdAt.seconds * 1000).toLocaleDateString()
+                  : "Unknown"}
               </p>
             </li>
           ))}

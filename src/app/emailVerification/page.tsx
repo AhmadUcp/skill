@@ -22,7 +22,7 @@ export default function EmailVerification() {
             setResendSuccess(true);
             setTimeout(() => setResendSuccess(false), 3000);
         } catch (err) {
-            setError("Failed to resend verification email. Please try again.");
+            setError("Failed to resend verification email. Please try again. "+err);
             setTimeout(() => setError(""), 3000);
         }
     };

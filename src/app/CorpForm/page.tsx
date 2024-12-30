@@ -1,9 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import { db } from "../components/firebase";
-import { collection, doc, setDoc, addDoc} from "firebase/firestore";
-import { useRouter } from "next/navigation";
 import { useAuthContext } from "../components/authContext";
 
 const JobSkillsCoursesForm: React.FC = () => {
@@ -12,7 +9,6 @@ const JobSkillsCoursesForm: React.FC = () => {
   const [skillsRequired, setSkillsRequired] = useState(""); // Comma-separated skills input
   const [recommendedCourses, setRecommendedCourses] = useState(""); // Comma-separated links
   const [loading, setLoading] = useState(false);
-  const router = useRouter();
   const { user } = useAuthContext(); // Assuming user and logout come from your AuthContext
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -26,23 +22,6 @@ const JobSkillsCoursesForm: React.FC = () => {
     setLoading(true);
 
     try {
-      const skillsList = skillsRequired
-        .split(",")
-        .map((skill) => skill.trim())
-        .filter((skill) => skill);
-
-      const coursesList = recommendedCourses
-        .split(",")
-        .map((link) => link.trim())
-        .filter((link) => link);
-
-      const jobData = {
-        jobTitle,
-        jobDescription,
-        skillsRequired: skillsList,
-        recommendedCourses: coursesList,
-        createdAt: new Date(),
-      };
 
       // Add to Firestore
       const userId = user?.uid; // Ensure userId is defined
@@ -51,11 +30,8 @@ const JobSkillsCoursesForm: React.FC = () => {
       }
       
       // Create a reference to the user's jobs collection
-      const userJobsCollectionRef = collection(db, "jobs", userId, "userJobs");
       
-      // Add the job document to the collection
-      const docRef = await addDoc(userJobsCollectionRef, jobData);
-      
+      // Add the job document to the collection      
 
       // Reset form
       setJobTitle("");

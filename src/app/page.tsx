@@ -1,10 +1,9 @@
 "use client";
 
 import Head from "next/head";
-import { ArrowRight, Award, Brain, Building, ChartArea, ChartBar, CheckCircle, Lightbulb, Mail, Navigation, Phone, Shield, Target, User, Users } from "lucide-react";
+import { ArrowRight, Award, Brain, Building, ChartArea, ChartBar,  Lightbulb, Mail, Navigation, Phone,  Target, User, Users } from "lucide-react";
 import Link from "next/link";
 import React from "react";
-import { ChatSession } from "@google/generative-ai";
 
 interface BenefitCardProps {
   icon: React.ReactNode;
@@ -12,7 +11,7 @@ interface BenefitCardProps {
   description: string;
 }
 
-export function BenefitCard({ icon, title, description }: BenefitCardProps) {
+function BenefitCard({ icon, title, description }: BenefitCardProps) {
   return (
     <div className="p-6 bg-gray-50 rounded-lg">
       <div className="mb-4">{icon}</div>
@@ -55,7 +54,7 @@ interface ProcessItemProps {
 }
 
 // Define and export the ProcessItem component
-export const ProcessItem: React.FC<ProcessItemProps> = ({
+const ProcessItem: React.FC<ProcessItemProps> = ({
   title,
   description,
   imageSrc,
@@ -108,24 +107,6 @@ export default function Home() {
       title: "Career Development",
       description: "60% more likely to pursue internal promotions.",
     },
-  ];
-
-  const values = [
-    { title: "For Corporations", content: "Enhance workforce readiness." },
-    { title: "For Employees", content: "Boost career satisfaction." },
-  ];
-
-  const steps = [
-    { title: "Step 1", content: "Analyze skill gaps." },
-    { title: "Step 2", content: "Design tailored pathways." },
-    { title: "Step 3", content: "Implement programs." },
-    { title: "Step 4", content: "Track and improve." },
-  ];
-
-  const contactFields = [
-    { type: "text", placeholder: "Name" },
-    { type: "email", placeholder: "Email" },
-    { type: "text", placeholder: "Company Name" },
   ];
 
   return (

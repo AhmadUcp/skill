@@ -14,7 +14,7 @@ export default function Login() {
 
     const login = async (email: string, password: string) => {
         try {
-            let userCredential = await signInWithEmailAndPassword(auth, email, password);
+            const userCredential = await signInWithEmailAndPassword(auth, email, password);
 
             const userData = userCredential.user;
 

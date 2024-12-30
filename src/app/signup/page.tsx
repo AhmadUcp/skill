@@ -1,5 +1,6 @@
 "use client";
 
+import { FirebaseError } from "firebase/app";
 import AuthForm from "../components/auth-form";
 import { auth,db } from "../components/firebase";
 import { createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
@@ -8,7 +9,6 @@ import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 
 export default function SignUp() {
-    const [role, setRole] = useState("Employee"); // Default role
     const [error, setError] = useState('');
     const [isSignedUp, setIsSignedUp] = useState(false); // Track signup completion
     const route = useRouter();
@@ -29,13 +29,17 @@ export default function SignUp() {
             saveUserToFirebase(email, password, username || "Unknown User", user.uid, role || "Employee");
     
             setIsSignedUp(true);
-        } catch (err: any) {
-            if (err.code === "auth/email-already-in-use") {
-                resetErrorAfterTimeout("This email is already in use. Please use a different email.");
-            } else if (err.code === "auth/weak-password") {
-                resetErrorAfterTimeout("Password is too weak. Please choose a stronger password.");
+        } catch (err: unknown) {
+            if (err instanceof FirebaseError) {
+                if (err.code === "auth/email-already-in-use") {
+                    resetErrorAfterTimeout("This email is already in use. Please use a different email.");
+                } else if (err.code === "auth/weak-password") {
+                    resetErrorAfterTimeout("Password is too weak. Please choose a stronger password.");
+                } else {
+                    resetErrorAfterTimeout("Something went wrong. Please try again.");
+                }
             } else {
-                resetErrorAfterTimeout("Something went wrong. Please try again.");
+                resetErrorAfterTimeout("An unexpected error occurred. Please try again.");
             }
         }
     };

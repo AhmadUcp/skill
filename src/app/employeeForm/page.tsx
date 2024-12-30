@@ -1,10 +1,10 @@
 "use client";
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback } from "react";
 import { Bar } from "react-chartjs-2";
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from "chart.js";
 import * as pdfjsLib from "pdfjs-dist";
 import "pdfjs-dist/build/pdf.worker";
-import analyzeSkill from "./gemini"; // Adjust the import path based on your file structure.
+import analyzeSkill from "./gemini" // Adjust the import path based on your file structure.
 import { db } from "../components/firebase";
 import { collection, getDocs } from "firebase/firestore";
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
@@ -28,7 +28,9 @@ const extractTextFromPDF = (pdfFile: File): Promise<string> => {
         for (let i = 1; i <= numPages; i++) {
           const page = await pdfDocument.getPage(i);
           const content = await page.getTextContent();
-          const pageText = content.items.map((item: any) => item.str).join(" ");
+          const pageText = content.items
+          .map((item) => ('str' in item ? item.str : ''))
+          .join(" ");
           textContent += pageText + "\n";
         }
         resolve(textContent);
@@ -57,12 +59,22 @@ const SkillGapAnalyzer: React.FC = () => {
   const [jobDescription, setJobDescription] = useState<string>(""); 
   const [cvSkills, setCvSkills] = useState<string[]>([]);
   const [jobSkills, setJobSkills] = useState<string[]>([]);
-  const [skillGapData, setSkillGapData] = useState<any>(null);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [skillGapData, setSkillGapData] = useState<{
+    missingSkills: string[];
+    overlappingSkills: string[];
+  } | null>(null);
+    const [loading, setLoading] = useState<boolean>(false);
   const [showAnalysisCard, setShowAnalysisCard] = useState<boolean>(false);
   const [showJobSearchCard, setShowJobSearchCard] = useState<boolean>(false);
-  const [matchingJobs, setMatchingJobs] = useState<any[]>([]); // Array to store matching jobs
-  const [loadingJobs, setLoadingJobs] = useState<boolean>(false);
+  const [matchingJobs, setMatchingJobs] = useState<{
+    id: string;
+    jobTitle: string;
+    jobDescription: string;
+    skillsRequired: string[];
+    recommendedCourses: string[];
+    createdAt?: string; // Optional if not always present
+  }[]>([]);
+    const [loadingJobs, setLoadingJobs] = useState<boolean>(false);
 
   // Handle file change
   const handleFileChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
@@ -169,8 +181,15 @@ const SkillGapAnalyzer: React.FC = () => {
       const usersCollectionRef = collection(db, "users");
       const usersSnapshot = await getDocs(usersCollectionRef);
   
-      const allJobs: any[] = [];
-  
+      const allJobs: {
+        id: string;
+        jobTitle: string;
+        jobDescription: string;
+        skillsRequired: string[];
+        recommendedCourses: string[];
+        createdAt?: string;
+      }[] = [];
+        
       // Loop through each user to get their userJobs subcollection
       for (const userDoc of usersSnapshot.docs) {
         const userJobsCollectionRef = collection(
@@ -249,15 +268,6 @@ const SkillGapAnalyzer: React.FC = () => {
   
   
   // Reset form
-  const resetForm = () => {
-    setPdfFile(null);
-    setJobDescription("");
-    setSkillGapData(null);
-    setCvSkills([]);
-    setJobSkills([]);
-    setShowAnalysisCard(false);
-    setShowJobSearchCard(false);
-  };
 
   return (
     <div className="container mx-auto p-6 bg-white rounded-lg shadow-xl max-w-4xl">

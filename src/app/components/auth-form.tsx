@@ -113,7 +113,7 @@ export default function AuthForm({ signup, func, errorMsg }: SignupType) {
             </>
           ) : (
             <>
-              Don't have an account?{" "}
+              Don&apos;t have an account?{" "}
               <Link href="/signup" className="text-indigo-500 font-medium hover:underline">
                 Create here
               </Link>

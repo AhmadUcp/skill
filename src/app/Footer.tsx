@@ -12,7 +12,7 @@ const Footer = () => {
 
   const [isSubscribed, setIsSubscribed] = useState(false);
 
-  const handleInputChange = (e: { target: { name: any; value: any; }; }) => {
+  const handleInputChange = (e: { target: { name: string; value: string; }; }) => {
     const { name, value } = e.target;
     setSubscription((prev) => ({ ...prev, [name]: value }));
   };
