@@ -1,0 +1,151 @@
+{
+    "courses": [
+        {
+            "title": "A Legal Toolkit for Starting and Scaling Your Business",
+            "university": "Columbia Law School",
+            "skills": [
+                "Chief Executives",
+                "General and Operations Managers",
+                "Human Resources Managers",
+                "Management Analysts"
+            ],
+            "learn_more_link": "https://www.biskamplified.com/detail-program/a-legal-toolkit-for-starting-and-scaling-your-business/22805/"
+        },
+        {
+            "title": "Advanced Artificial Intelligence & Robotics",
+            "university": "Nexford University",
+            "skills": [
+                "Electronics Engineers, Except Computer",
+                "Information Technology Project Managers",
+                "Robotics Engineers",
+                "Robotics Technicians",
+                "Software Developers"
+            ],
+            "learn_more_link": "https://www.biskamplified.com/detail-program/advanced-artificial-intelligence-robotics/23120/"
+        },
+        {
+            "title": "Advanced Master Certificate in Integrated Supply Chain Management",
+            "university": "Michigan State University",
+            "skills": [
+                "Business Continuity Planners",
+                "Industrial Production Managers",
+                "Logisticians",
+                "Purchasing Managers",
+                "Supply Chain Managers"
+            ],
+            "learn_more_link": "https://www.biskamplified.com/detail-program/advanced-master-certificate-in-integrated-supply-chain-management/22942/"
+        },
+        {
+            "title": "Advanced Master Certificate in Supply Chain Management and Procurement",
+            "university": "Michigan State University",
+            "skills": [
+                "Agricultural Inspectors",
+                "Aircraft Launch and Recovery Specialists",
+                "Business Operations Specialists, All Other",
+                "Climate Change Policy Analysts",
+                "Conveyor Operators and Tenders",
+                "Electro-Mechanical and Mechatronics Technologists and Technicians",
+                "Fallers",
+                "Fence Erectors",
+                "First-Line Supervisors of Production and Operating Workers",
+                "Fishing and Hunting Workers",
+                "Heavy and Tractor-Trailer Truck Drivers",
+                "Helpers--Installation, Maintenance, and Repair Workers",
+                "Helpers--Production Workers",
+                "Industrial Engineers",
+                "Legislators",
+                "Log Graders and Scalers",
+                "Logging Equipment Operators",
+                "Logging Workers, All Other",
+                "Logisticians",
+                "Logistics Analysts",
+                "Logistics Engineers",
+                "Material Moving Workers, All Other",
+                "Mobile Heavy Equipment Mechanics, Except Engines",
+                "Outdoor Power Equipment and Other Small Engine Mechanics",
+                "Police and Sheriff's Patrol Officers",
+                "Production Workers, All Other",
+                "Production, Planning, and Expediting Clerks",
+                "Purchasing Agents, Except Wholesale, Retail, and Farm Products",
+                "Purchasing Managers",
+                "Sales Managers",
+                "Supply Chain Managers",
+                "Surveying and Mapping Technicians",
+                "Textile Winding, Twisting, and Drawing Out Machine Setters, Operators, and Tenders",
+                "Transportation Engineers",
+                "Transportation, Storage, and Distribution Managers"
+            ],
+            "learn_more_link": "https://www.biskamplified.com/detail-program/advanced-master-certificate-in-supply-chain-management-and-procurement/22943/"
+        },
+        {
+            "title": "AI Fundamentals & Automation",
+            "university": "Nexford University",
+            "skills": [
+                "Business Intelligence Analysts",
+                "Computer Network Architects",
+                "Computer Systems Engineers/Architects",
+                "Information Technology Project Managers",
+                "Software Developers"
+            ],
+            "learn_more_link": "https://www.biskamplified.com/detail-program/ai-fundamentals-automation/23119/"
+        },
+        {
+            "title": "Artificial Intelligence Bundle - Healthcare",
+            "university": "University of Louisville",
+            "skills": [
+                "Computer and Information Research Scientists",
+                "Database Architects",
+                "Medical Records Specialists",
+                "Medical and Health Services Managers",
+                "Software Developers"
+            ],
+            "learn_more_link": "https://www.biskamplified.com/detail-program/artificial-intelligence-bundle-healthcare/23168/"
+        },
+        {
+            "title": "Artificial Intelligence Bundle - Logistics",
+            "university": "University of Louisville",
+            "skills": [
+                "Computer and Information Research Scientists",
+                "Database Architects",
+                "Robotics Engineers",
+                "Software Developers",
+                "Software Quality Assurance Analysts and Testers"
+            ],
+            "learn_more_link": "https://www.biskamplified.com/detail-program/artificial-intelligence-bundle-logistics/23169/"
+        },
+        {
+            "title": "Associate of Applied Science in Business",
+            "university": "Nexford University",
+            "skills": [
+                "Bookkeeping, Accounting, and Auditing Clerks",
+                "Executive Secretaries and Executive Administrative Assistants",
+                "First-Line Supervisors of Office and Administrative Support Workers",
+                "First-Line Supervisors of Retail Sales Workers",
+                "Sales Representatives, Wholesale and Manufacturing, Except Technical and Scientific Products"
+            ],
+            "learn_more_link": "https://www.biskamplified.com/detail-program/associate-of-applied-science-in-business/23121/"
+        },
+        {
+            "title": "BA in Communication",
+            "university": "University of Missouri-St. Louis",
+            "skills": [
+                "Administrative Services Managers",
+                "Broadcast Announcers and Radio Disc Jockeys",
+                "Chief Executives",
+                "Editors",
+                "First-Line Supervisors of Office and Administrative Support Workers",
+                "Fundraising Managers",
+                "Marketing Managers",
+                "News Analysts, Reporters, and Journalists",
+                "Political Scientists",
+                "Public Relations Managers",
+                "Public Relations Specialists",
+                "Sales Engineers",
+                "Sales Representatives of Services, Except Advertising, Insurance, Financial Services, and Travel",
+                "Technical Writers",
+                "Training and Development Specialists"
+            ],
+            "learn_more_link": "https://www.biskamplified.com/detail-program/ba-in-communication/23000/"
+        }
+    ]
+}

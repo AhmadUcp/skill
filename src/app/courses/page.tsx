@@ -1,6 +1,7 @@
 "use client";
-import { useEffect, useState } from "react";
 
+import { useEffect, useState } from "react";
+import coursesData from './scrapedCourses.json';
 type Course = {
   title: string;
   university: string;
@@ -13,17 +14,14 @@ export default function CoursesPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchCourses = async () => {
+    const fetchCourses = () => {
       if (courses.length > 0) {
-        // If courses already exist, do not fetch them again
         setLoading(false);
         return;
       }
 
       try {
-        const response = await fetch("http://127.0.0.1:8000/api/courses");
-        const data = await response.json();
-        setCourses(data.courses);
+        setCourses(coursesData.courses);
       } catch (error) {
         console.error("Error fetching courses:", error);
       } finally {
@@ -32,7 +30,7 @@ export default function CoursesPage() {
     };
 
     fetchCourses();
-  }, [courses]); // Dependency array includes `courses` to re-run only if `courses` changes
+  }, [courses]);
 
   if (loading) {
     return (
