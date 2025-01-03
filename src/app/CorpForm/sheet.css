@@ -1,0 +1,18 @@
+.dot {
+    font-size: 36px; /* Increase size */
+    margin-right: 2px; /* Space between dots */
+    animation: pulse 1s infinite; /* Smooth pulse animation */
+  }
+  
+  @keyframes pulse {
+    0% {
+      opacity: 0.3;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0.3;
+    }
+  }
+  
